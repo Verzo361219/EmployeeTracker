@@ -1,11 +1,10 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-const consTable = require("console.table");
 
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "Mirri06051997",
   database: "employee_db",
 });
 
@@ -164,7 +163,7 @@ function addRole() {
         db.query(`INSERT INTO roles (title, salary, department_id)
           VALUES  ('${answers.roleAdded}',
                   '${answers.salaryAdded}',
-                  '${alldepts.indexOf(answers.deptRole) + 1}');`),
+                  '${allDepts.indexOf(answers.deptRole) + 1}');`),
           function (err) {
             if (err) throw err;
             initPrompt();
@@ -261,7 +260,7 @@ function updateEmployee() {
         db.query(
           `UPDATE employees SET role_id = ${
             allroles.indexOf(answers.emp_role) + 1
-          } WHERE employees.id = ${allemps.indexOf(answers.emp_name) + 1}`
+          } WHERE employees.id = ${allEmployees.indexOf(answers.emp_name) + 1}`
         ),
           function (err) {
             if (err) throw err;
